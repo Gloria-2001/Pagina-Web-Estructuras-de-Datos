@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <h1>Cola</h1>
+    <button id="add">Add</button>
+    <button id="remove">Remove</button>
+    <button id="save">Guardar</button>
+    <button id="load">Cargar</button>
+    <button id="new">Nuevo</button>
+    <div id="my-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="close-span" class="close">&times;</span>
+                <h2 id="text-head"></h2>
+            </div>
+            <p id="text-modal"></p>
+        </div>
+    </div>
+    <div>
+        <h3 id="msg_new">Cola nueva lista para usar</h3>
+        <ul id="show" class="horizontal"></ul>
+    </div>
+    <script src="../js/queue.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+void enqueue(Queue *q, int a){
+    Node *newNodo = (Node *)malloc(Node);
+    newNodo->data = elem;
+    newNodo->next = NULL;
+    if(isEmpty(q)){
+        q->ptrInit = newNodo;
+        q->ptrLast = newNodo;
+    }else{
+        newNodo->next = q->ptrInit;
+        q->ptrInit = newNodo;
+    }
+}

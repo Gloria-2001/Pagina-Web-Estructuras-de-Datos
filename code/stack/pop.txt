@@ -1,0 +1,8 @@
+int pop(Stack *s){
+    int a = -1;
+    if(!isEmpty(s)){
+        a = s->ptr->data;
+        s->ptr = s->ptr->next;
+    }
+    return a;
+}

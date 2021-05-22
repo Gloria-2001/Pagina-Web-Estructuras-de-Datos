@@ -1,0 +1,27 @@
+int removeIndex(List *l, int index){
+    int elem = -1, i = 1;
+    Node *aux = l->ptrInit;
+    if(index == 0){
+        elem = aux->data;
+        l->ptrInit = aux->next;
+        aux->next = NULL;
+        free(aux);
+    }else{
+        Node *dump = l->ptrInit;
+        aux = aux->next;
+        while(aux->next != NULL){
+            if(i == index) break;
+            aux = aux->next;
+            dump = dump->next;
+            i++;
+        }
+        elem = aux->data
+        dump->next = aux->next;
+        if(aux == l->ptrBack){
+            l->ptrBack = dump;
+        }
+        aux->next = NULL;
+        free(aux);
+    }
+    return elem;
+}

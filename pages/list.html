@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css">
+    <title>List</title>
+</head>
+<body>
+    <h1>Lista</h1>
+    <button id="add">Append Front</button>
+    <button id="add-back">Append Back</button>
+    <button id="add-index">Append Index</button>
+    <button id="remove">Remove Back</button>
+    <button id="remove-index">Remove Index</button>
+    <button id="remove-element">Remove Element</button>
+    <button id="save">Guardar</button>
+    <button id="load">Cargar</button>
+    <div id="my-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="close-span" class="close">&times;</span>
+                <h2 id="text-head"></h2>
+            </div>
+            <p id="text-modal"></p>
+        </div>
+    </div>
+    <div>
+        <h3 id="msg_new">Lista nueva creada para usarse</h3>
+        <ul id="show" class="horizontal"></ul>
+    </div>
+    <script src="../js/list.js"></script>
+</body>
+</html>

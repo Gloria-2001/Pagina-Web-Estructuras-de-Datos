@@ -1,0 +1,30 @@
+int removeElement(Lista *l, int elem){
+    int elemReturn = -1;
+    int isInList = 0;
+    Node *aux = l->ptrInit->next;
+    Node *dump = l->ptrInit;
+    if(dump->data == elem){
+        l->ptrInit = aux;
+        dump->next = NULL;
+        elemReturn = dump->data;
+        free(dump);
+        return elemReturn;
+    }
+    while(aux != l->ptrBack){
+        if(aux->data == elem){
+            isInList = 1;
+            break;
+        }
+        aux = aux->next;
+        dump = dump->next;
+    }
+    if(isInList){
+        elemReturn = aux->data
+        dump->next = aux->next;
+        aux->next = NULL;
+        if(l->ptrBack == aux)
+            l->ptrBack = dump;
+        free(aux);
+    }
+    return elemReturn;
+}

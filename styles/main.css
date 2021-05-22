@@ -1,0 +1,168 @@
+.big-text{
+    font-size: 2em;
+}
+
+li{
+    font-size: 2em;
+    text-align: center;
+    border-style: solid;
+    list-style:none;
+    list-style-type:none;
+}
+
+ul{
+    width: 20%;
+    list-style: none;
+    border-style: none;
+    border-top: 0em;
+}
+
+#first-elem{
+    background-color: rgb(11, 218, 11);
+    list-style-type: "»";
+}
+
+#last-elem{
+    background-color: red;
+    list-style-type: "»";
+}
+
+#head{
+    border-style: solid ;
+    color: white;
+    border-top: 0em;
+    border-color: black;
+}
+
+#back{
+    border-style: solid ;
+    color: white;
+    border-bottom: 0em;
+    border-color: black;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content/Box */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 2em;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+}
+  
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#accept{
+    color: white;
+    background-color: #5cb85c;
+}
+
+#cancel{
+    color: white;
+    background-color: red;
+}
+
+button{
+    margin: 0.5em;
+}
+
+button:hover, button:focus{
+    cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+table{
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+#save, #load, #new{
+    float: right;
+}
+
+.horizontal{
+    width: 100% !important;
+}
+
+.horizontal li{
+    display: inline;
+    float: left;
+    width: 2em;
+}
+
+.horizontal #head{
+    border: solid black;
+    border-left: 0em !important;
+    color: black;
+}
+
+.horizontal #back{
+    border: solid black;
+    border-right: 0em !important;
+    color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.workspace{
+    width: 50%;
+    align-items: center;
+}
+
+.code{
+    align-items: left;
+}

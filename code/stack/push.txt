@@ -1,0 +1,11 @@
+void push(Stack *s, int elem){
+    Node *newNodo = (Node *)malloc(Node);
+    newNodo->data = elem;
+    newNodo->next = NULL;
+    if(isEmpty(s)){
+        s->ptr = newNodo
+    }else{
+        newNodo->next = s->ptr;
+        s->ptr = newNodo;
+    }
+}

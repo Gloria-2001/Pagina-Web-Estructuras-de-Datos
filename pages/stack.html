@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css">
+    <title>Stack</title>
+</head>
+<body>
+    <h1>Pila</h1>
+    <button id="push">Push</button>
+    <button id="pop">Pop</button>
+    <button id="save">Guardar</button>
+    <button id="load">Cargar</button>
+    <button id="new">Nuevo</button>
+    <div id="my-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="close-span" class="close">&times;</span>
+                <h2 id="text-head"></h2>
+            </div>
+            <p id="text-modal"></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="workspace">
+            <h3 id="msg_new">Pila nueva lista para usar</h3>
+            <ul id="show"></ul>
+        </div>
+        <div class="code">
+            <pre id="c-code"></pre>
+        </div>
+    </div>
+    <script src="../js/stack.js"></script>
+</body>
+</html>

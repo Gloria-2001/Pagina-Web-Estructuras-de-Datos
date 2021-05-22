@@ -1,0 +1,28 @@
+void appendIndex(List *l, int elem, int index){
+    Node *newNodo = (Node *)malloc(Node);
+    newNodo->data = elem;
+    newNodo->next = NULL;
+    if(isEmpty(l)){
+        l->ptrInit = newNodo;
+        l->ptrBack = newNodo;
+    }else{
+        if(index==0){
+            newNodo->next = l->ptrInit;
+            l->ptrInit = newNodo;
+        }else{
+            Node *aux = l->ptrInit;
+            int i = 1;
+            while(aux->next != NULL){
+                if(i == index)
+                    break;
+                aux = aux->next;
+                i++;
+            }
+            newNodo->next = aux->next
+            aux->next = newNodo;
+            if(aux == l->ptrBack){
+                l->ptrBack = newNodo;
+            }
+        }
+    }
+}

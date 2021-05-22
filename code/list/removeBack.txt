@@ -1,0 +1,14 @@
+int removeBack(List *l){
+    int elem = -1;
+    if(isEmpty(l)){
+        Node *aux = l->ptrInit;
+        while(aux->next != l->ptrBack)
+            aux = aux->next;
+        elem = l->ptrBack->data;
+        l->ptrBack = aux;
+        Node *del = aux->next;
+        q->ptrLast->ptrBack = NULL;
+        free(del);
+    }
+    return elem;
+}

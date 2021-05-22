@@ -1,0 +1,12 @@
+void appendBack(List *l, int elem){
+    Node *newNodo = (Node *)malloc(Node);
+    newNodo->data = elem;
+    newNodo->next = NULL;
+    if(isEmpty(l)){
+        l->ptrInit = newNodo;
+        l->ptrBack = newNodo;
+    }else{
+        newNodo->next = l->ptrBack;
+        l->ptrBack = newNodo;
+    }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras de Datos</title>
+    <link rel="stylesheet" href="./styles/indexStyle.css">
+</head>
+<header>
+    <img src="./img/logoIPN.png" alt="" class="escuela" id="ipn">
+    <p id="parrafoEscuela">Instituto Politécnico Nacional<br>Escuela Superior de Cómputo</p>
+    <img src="./img/logoESCOM.png" alt="" class="escuela" id="escom">
+</header>
+<body>
+    <ul id="menu">
+        <li><a href="#inicio" class="opc">Inicio</a></li>
+        <li><a href="#aprender" class="opc">Empieza a Aprender</a></li>
+        <li><a href="#final" class="opc">¿Quiénes somos?</a></li>
+    </ul>
+    <img src="./img/teclado.jpg" alt="" id="bienvenida">
+    <div class="texto-encima"><¡Bienvenidos Coders!></div>
+    <main>
+        
+        <section id="inicio">
+            <article>
+               <h1>Inicio</h1>
+                <table>
+                    <tr>
+                        <td><p class="p1" id="p1-1">¿Qué tratamos de hacer?</p><br>
+                        <p class="p1" id="p1-2">Sabemos que al iniciar tu camino en una carrera de programación puede resultar muy complicado entender todo a la primera. Por esta razón, se creo esta página web, la cual nos va a ayudar a entender mejor cómo funcionan las estructuras de datos, tales como la Pila, la Cola y/o Listas</p></td>
+                        <td><img src="./img/estructurasDatos.jpg" alt="" id="estructura"></td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+        <section id="aprender">
+            <article>
+                <h1>Empieza a Aprender</h1><br>
+                <p>Como ya dijimos, trataremos de ayudarte a comprender mejor el funcionamiento de las principales estructuras de datos: Pila, Cola y Lista.</p><br>
+                <p>Empezaremos con las Pilas.</p>
+                <br>
+            </article>
+            <h2>Pila</h2>
+            <article id="pila">
+                <div class="pilas">
+                    <h3>¿Qué es una Pila?</h3><br>
+                    <p>Se le conoce como una estructura de datos LIFO (last-in, first-out). Es una colección ordenada de elementos en la que se pueden insertar y eliminar por un extremo llamado tope.</p><br>
+                    <h3>Operaciones</h3><br>
+                    <p>Sus operaciones son:</p> 
+                    <ul class="operaciones">
+                        <li>Insertar elementos</li>
+                        <li>Eliminar elementos</li>
+                        <li>Determinar si la pila está llena</li>
+                        <li>Determinar si la pila está vacía</li>
+                    </ul><br>
+                    <h3>Ejemplos cotidianos</h3><br>
+                    <p>En la vida diaria, podemos observar las pilas en los siguientes momentos:</p>
+                    <ul class="ejemCot">
+                        <li>Apilar libros</li>
+                        <li>Torres de Hanoi</li>
+                        <li>Sistema de estacionamiento</li>
+                        <li>Leer una secuencia de caracteres</li>
+                    </ul>
+                </div>
+                <div class="pilas">
+                    <img src="./img/pilas.png" alt="" class="imgEst">
+                </div>
+            </article><br><br>
+            <a href="./pages/stack.html" class="ejemplo">Vamos al ejemplo</a><br><br><br>
+            <p>Ahora, continuamos con Colas.</p><br>
+            <h2>Cola</h2>
+            <article id="cola">
+                <div class="colas">
+                    <h3>¿Qué es una Cola?</h3><br>
+                    <p>Se conoce como una estructura FIFO (first-in, first-out). Es una colección ordenada de elementos de la que se pueden borrar elementos en un extremo (llamado el frente de la cola) o insertarlos por el otro (llamado el final de la cola). El primer elemento insertado en la cola, es el primero en ser eliminado</p><br>
+                    <h3>Operaciones</h3><br>
+                    <p>Sus operaciones son:</p>
+                    <ul class="operaciones">
+                        <li>Insertar elemento</li>
+                        <li>Eliminar elemento</li>
+                        <li>Determinar si la cola está llena</li>
+                        <li>Determinar si la cola está vacía</li>
+                    </ul><br>
+                    <h3>Ejemplos cotidianos</h3><br>
+                    <p>Algunas situaciones de la vida diaria que se asemejan al comportamiento de esta estructura son:</p>
+                    <ul class="ejemCot">
+                        <li>Cola de clientes en el banco</li>
+                        <li>Parada de camiones</li>
+                        <li>Cola en un supermercado</li>
+                        <li>Cola en una tortillería</li>
+                    </ul>
+                </div>
+                <div class="colas">
+                    <img src="./img/colas.png" alt="" class="imgEst" id="imgCola">
+                </div>
+            </article><br><br>
+            <a href="./pages/queue.html" class="ejemplo" id="ejemplo2">Vamos al ejemplo</a><br><br><br>
+            <p>Seguimos con Listas.</p><br>
+            <h2>Lista</h2>
+            <article id="lista">
+                <div class="listas">
+                    <h3>¿Qué es una Lista?</h3><br>
+                    <p>Es una colección ordenada de elementos en la que se pueden insertar y eliminar elementos en el lugar que se requiera. Aunque normalmente se crean listas ordenadas.</p><br>
+                    <h3>Operaciones</h3><br>
+                    <p>Sus operaciones son:</p>
+                    <ul class="operaciones">
+                        <li>Agregar un nodo a la lista</li>
+                        <li>Buscar un nodo en la lista</li>
+                        <li>Imprimir toda la lista</li>
+                        <li>Eliminar un nodo de la lista</li>
+                        <li>Modificar los datos de un nodo</li>
+                        <li>escribir datos al archivo</li>
+                        <li>Leer datos del archivo</li>
+                    </ul><br>
+                    <h3>Ejemplos cotidianos</h3><br>
+                    <p>A diario, las listas se pueden ver reflejadas en los siguientes ejemplos:</p>
+                    <ul class="ejemCot">
+                        <li>Lista para representar el inventario de productos en un supermercado</li>
+                        <li>Lista que refleja una cartera de clientes</li>
+                        <li>Lista para mostrar ganancias</li>
+                        <li>Lista de víveres</li>
+                    </ul><br>
+                    <p>Cabe aclarar que existen varios tipos de lista. Aquí solo se mostrará la simple.</p>
+                </div>
+                <div class="listas">
+                    <img src="./img/lista.jpg" alt="" class="imgEst" id="imgLista">
+                </div>
+            </article><br><br>
+            <a href="./pages/list.html" class="ejemplo" id="ejemplo3">Vamos al ejemplo</a><br><br><br>
+        </section>
+        <section id="final">
+            <article>
+                <h1>¿Quiénes somos?</h1><br>
+                <p>Conoce a las programadoras detrás de este proyecto.</p><br>
+            </article>
+            <div id="general">
+                <div id="giselle">
+                    <p class="nombre">Erika Giselle González Mora</p>
+                    <br>
+                    <div class="info">
+                        <img src="./img/usuario.png" alt="" class="imgInfo">
+                    </div>
+                    <br>
+                    <div class="info">
+                        <p class="infoPersonal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aperiam vitae accusantium sequi, dolorem excepturi ipsam dolores dolore ab tempore.</p>
+                    </div>
+                </div>
+                <div id="gloria">
+                    <p class="nombre">Gloria Oliva Olivares Ménez</p><br>
+                    <div class="info">
+                        <img src="./img/gloria.jpg" alt="" class="imgInfo">
+                    </div>
+                    <br>
+                    <div class="info">
+                        <p class="infoPersonal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aperiam vitae accusantium sequi, dolorem excepturi ipsam dolores dolore ab tempore.</p>
+                    </div>
+                </div>
+                <div id="eli">
+                    <p class="nombre">Nombre completo Eli</p><br>
+                    <div class="info">
+                        <img src="./img/usuario.png" alt="" class="imgInfo">
+                    </div>
+                    <br><br>
+                    <div class="info">
+                        <p class="infoPersonal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aperiam vitae accusantium sequi, dolorem excepturi ipsam dolores dolore ab tempore.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<footer>
+    <div class="firma">
+        <img src="./img/outline_copyright_white_24dp.png" alt="" id="copyright">
+    </div>
+    <div class="firma">
+        <p>Copyright, 2021</p>
+    </div>
+</footer>
+</html>
