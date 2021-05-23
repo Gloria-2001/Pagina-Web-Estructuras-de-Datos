@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Queue</title>
     <link rel="stylesheet" href="../styles/main.css">
 </head>
+
 <body>
     <h1>Cola</h1>
     <button id="add">Add</button>
@@ -23,10 +25,16 @@
             <p id="text-modal"></p>
         </div>
     </div>
-    <div>
-        <h3 id="msg_new">Cola nueva lista para usar</h3>
-        <ul id="show" class="horizontal"></ul>
+    <div class="container">
+        <div class="workspace">
+            <h3 id="msg_new">Cola nueva lista para usar</h3>
+            <ul id="show" class="horizontal"></ul>
+        </div>
+        <div class="code">
+            <pre id="c-code"></pre>
+        </div>
     </div>
     <script src="../js/queue.js"></script>
 </body>
+
 </html>
