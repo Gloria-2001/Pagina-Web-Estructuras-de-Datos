@@ -101,6 +101,7 @@ async function waitPop(){
 btn_pop.addEventListener('click',async(e)=>{
     e.preventDefault();
     var out = document.getElementById("first-stack");
+    // Cambiamos ID
     out.id = "last-stack"
     my_code.innerText = stack.codePop();
     // Retrasamos la actualización de los datos
