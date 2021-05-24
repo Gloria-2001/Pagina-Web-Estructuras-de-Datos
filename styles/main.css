@@ -52,8 +52,9 @@ ul{
 
 /*Animation for pop from the stack*/
 @keyframes out{
+    0%{left: 5px; top: 5px;}
     50%{left: 5px; top:-150px;}
-    100%{left: 300px;}
+    100%{left: 300px; top: -150px;}
 }
 
 #last-elem{
