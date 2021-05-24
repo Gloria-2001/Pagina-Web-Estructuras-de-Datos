@@ -70,7 +70,7 @@ function showStack() {
     msg_new.style.display = "none"
     let elems = stack.getStack()
     let size = elems.length
-    new_list = `<li id="head">_</li><li id="first-elem">${elems[size-1]}</li>`
+    new_list = `<li id="head">_</li><li class="first-elem" id="first-stack">${elems[size-1]}</li>`
     for(let i = size-2; i >= 0; i--)
         new_list += `<li>${elems[i]}</li>`
     par.innerHTML = new_list;
@@ -93,9 +93,11 @@ btn_push.addEventListener('click',(e)=>{
 
 btn_pop.addEventListener('click',(e)=>{
     e.preventDefault();
-    let elem = stack.pop()
+    let elem = stack.pop();
     my_code.innerText = stack.codePop();
-    alert(`Elemento sacado: ${elem}`)
+    alert(`Elemento sacado: ${elem}`);
+    var out=document.getElementById("first-stack");
+    out.id="last-stack";
     showStack();
 })
 
