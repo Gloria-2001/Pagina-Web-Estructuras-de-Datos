@@ -91,14 +91,20 @@ btn_push.addEventListener('click',(e)=>{
     showStack();
 });
 
-btn_pop.addEventListener('click',(e)=>{
-    e.preventDefault();
+// Se realiza el método de pop
+async function waitPop(){
     let elem = stack.pop();
-    my_code.innerText = stack.codePop();
     alert(`Elemento sacado: ${elem}`);
-    var out=document.getElementById("first-stack");
-    out.id="last-stack";
     showStack();
+}
+
+btn_pop.addEventListener('click',async(e)=>{
+    e.preventDefault();
+    var out = document.getElementById("first-stack");
+    out.id = "last-stack"
+    my_code.innerText = stack.codePop();
+    // Retrasamos la actualización de los datos
+    await setTimeout(waitPop,2000);
 })
 
 
