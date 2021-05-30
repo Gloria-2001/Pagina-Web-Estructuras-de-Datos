@@ -77,7 +77,7 @@ function showQueue() {
     if (size === 1) {
         my_list += `<li id="last-elem">${elems[size-1]}</li>`
     } else {
-        my_list += `<li id="first-elem">${elems[size-1]}</li>`
+        my_list += `<li id="head">_</li><li class="first-elem" id="first-enqueue">${elems[size-1]}</li>`
         for (let i = size - 2; i >= 1; i--)
             my_list += `<li>${elems[i]}</li>`
         my_list += `<li id="last-elem">${elems[0]}</li>`
@@ -95,19 +95,26 @@ btn_new.addEventListener("click", e => {
 })
 
 btn_add.addEventListener("click", (e) => {
-    e.preventDefault();
-    let elem = prompt("Ingrese un elemento");
-    queue.enqueue(elem);
-    my_code.innerText = queue.codeEnqueue();
-    showQueue();
-})
-
-btn_remove.addEventListener("click", e => {
-    e.preventDefault();
+        e.preventDefault();
+        let elem = prompt("Ingrese un elemento");
+        queue.enqueue(elem);
+        my_code.innerText = queue.codeEnqueue();
+        showQueue();
+    })
+    // Se realiza el método de pop
+async function waitDequeue() {
     let elem = queue.dequeue();
-    my_code.innerText = queue.codeDequeue();
     alert(`Elemento sacado ${elem}`)
     showQueue();
+}
+btn_remove.addEventListener("click", async(e) => {
+    e.preventDefault();
+    var out = document.getElementById("first-enqueue");
+    // Cambiamos ID
+    out.id = "last-dequeue"
+    my_code.innerText = queue.codeDequeue();
+    // Retrasamos la actualización de los datos
+    await setTimeout(waitDequeue, 2000);
 })
 
 /**
