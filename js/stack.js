@@ -1,26 +1,26 @@
-class Stack{
-    constructor(){
+class Stack {
+    constructor() {
         this.values = []
     }
-    push(e){
+    push(e) {
         // Agrega un valor a la lista (pila)
         this.values.push(e)
     }
-    pop(){
+    pop() {
         // Si es que no hay elementos, devuelve cero
-        if(this.values.length === 0)
+        if (this.values.length === 0)
             return -1
-        // Sino, se regresa el ultimo elemento ingresado
+                // Sino, se regresa el ultimo elemento ingresado
         return this.values.pop()
     }
-    getStack(){
+    getStack() {
         // Se devuelve la pila en forma de array
         return this.values
     }
-    setStack(arr){
+    setStack(arr) {
         this.values = arr;
     }
-    codePush(){
+    codePush() {
         return `
         void push(Stack *s, int elem){
             Node *newNodo = (Node *)malloc(Node);
@@ -35,7 +35,7 @@ class Stack{
         }
         `
     }
-    codePop(){
+    codePop() {
         return `
         int pop(Stack *s){
             int elem = -1;
@@ -71,19 +71,19 @@ function showStack() {
     let elems = stack.getStack()
     let size = elems.length
     new_list = `<li id="head">_</li><li class="first-elem" id="first-stack">${elems[size-1]}</li>`
-    for(let i = size-2; i >= 0; i--)
+    for (let i = size - 2; i >= 0; i--)
         new_list += `<li>${elems[i]}</li>`
     par.innerHTML = new_list;
 }
 
-btn_new.addEventListener("click",e=>{
+btn_new.addEventListener("click", e => {
     e.preventDefault();
     stack.setStack([]);
     msg_new.style.display = "block"
     par.innerHTML = "";
 })
 
-btn_push.addEventListener('click',(e)=>{
+btn_push.addEventListener('click', (e) => {
     e.preventDefault();
     let element = prompt("Ingrese un elemento");
     stack.push(element)
@@ -92,20 +92,20 @@ btn_push.addEventListener('click',(e)=>{
 });
 
 // Se realiza el método de pop
-async function waitPop(){
+async function waitPop() {
     let elem = stack.pop();
     alert(`Elemento sacado: ${elem}`);
     showStack();
 }
 
-btn_pop.addEventListener('click',async(e)=>{
+btn_pop.addEventListener('click', async(e) => {
     e.preventDefault();
     var out = document.getElementById("first-stack");
     // Cambiamos ID
     out.id = "last-stack"
     my_code.innerText = stack.codePop();
     // Retrasamos la actualización de los datos
-    await setTimeout(waitPop,2000);
+    await setTimeout(waitPop, 2000);
 })
 
 
@@ -117,14 +117,14 @@ btn_pop.addEventListener('click',async(e)=>{
  * se creara la llave, de otro modo, se agregara a la lista de
  * la llave stack_db
  */
-btn_save.addEventListener('click', e=>{
+btn_save.addEventListener('click', e => {
     e.preventDefault()
     let nameStr = prompt("Nombre de la estructura")
     let dirSave = {
         name: nameStr,
         data: stack.getStack()
     };
-    if(localStorage.getItem("stack_db") === null)
+    if (localStorage.getItem("stack_db") === null)
         createProWebDB(dirSave);
     else
         saveInDB(dirSave)
@@ -136,10 +136,10 @@ btn_save.addEventListener('click', e=>{
  * @param dirSave configuracion a guardar
  * 
  */
-function createProWebDB(dirSave){
+function createProWebDB(dirSave) {
     // JSON.stringify pasa todo a un JSON que pueda comprender
     // el local storage
-    localStorage.setItem("stack_db",JSON.stringify([dirSave]))
+    localStorage.setItem("stack_db", JSON.stringify([dirSave]))
 }
 
 /**
@@ -147,10 +147,10 @@ function createProWebDB(dirSave){
  * la nueva configuracion a la lista
  * @param dirSave configuracion a guardar
  */
-function saveInDB(dirSave){
-    let listSaved = JSON.parse(localStorage.getItem("stack_db"));    
+function saveInDB(dirSave) {
+    let listSaved = JSON.parse(localStorage.getItem("stack_db"));
     listSaved.push(dirSave);
-    localStorage.setItem("stack_db",JSON.stringify(listSaved));
+    localStorage.setItem("stack_db", JSON.stringify(listSaved));
 }
 
 /**
@@ -159,8 +159,8 @@ function saveInDB(dirSave){
  * menos (el que se desidio eliminar)
  * @param configs lista de configuraciones
  */
-function updateAllDB(configs){
-    localStorage.setItem("stack_db",JSON.stringify(configs));
+function updateAllDB(configs) {
+    localStorage.setItem("stack_db", JSON.stringify(configs));
 }
 
 
@@ -176,10 +176,10 @@ btn_load.addEventListener('click', e => {
     // Se construye una tabla en html desde js
     txt = "<table><tr><th>No.</th><th>Nombre</th><th>Aciones</th></tr>"
     stack_conf = localStorage.getItem("stack_db")
-    if(stack_conf !== null){
+    if (stack_conf !== null) {
         configs = JSON.parse(stack_conf)
         size = configs.length
-        for(let i=0; i<size; i++){
+        for (let i = 0; i < size; i++) {
             txt += "<tr>"
             txt += `<td>${i+1}</td><td>${configs[i]["name"]}</td>`
             txt += `<td><button class="load-conf" value=${i}>Cargar</button><button class="delete-conf" value=${i}>Eliminar</button></td>`
@@ -187,7 +187,7 @@ btn_load.addEventListener('click', e => {
         }
         txt += "</table>"
         document.getElementById("text-modal").innerHTML = txt;
-        
+
         // Se visualiza el modal
         modal.style.display = "block"
 
@@ -195,9 +195,9 @@ btn_load.addEventListener('click', e => {
         // para la tabla
         let btns_load = document.getElementsByClassName("load-conf")
         let size_btns = btns_load.length
-        // btns_load son botones para cargar una configuracion 
-        for(let i=0; i<size_btns; i++){
-            btns_load[i].addEventListener("click", e=>{
+            // btns_load son botones para cargar una configuracion 
+        for (let i = 0; i < size_btns; i++) {
+            btns_load[i].addEventListener("click", e => {
                 e.preventDefault()
                 stack.setStack(configs[btns_load[i].value]["data"]);
                 // Se oculta el modal
@@ -208,20 +208,20 @@ btn_load.addEventListener('click', e => {
 
         // btns_delete son botones para eliminar una configuracion
         let btns_delete = document.getElementsByClassName("delete-conf")
-        for(let i=0; i<size_btns; i++){
-            btns_delete[i].addEventListener("click", e=>{
+        for (let i = 0; i < size_btns; i++) {
+            btns_delete[i].addEventListener("click", e => {
                 e.preventDefault()
-                configs.splice(btns_load[i].value,1)
+                configs.splice(btns_load[i].value, 1)
                 updateAllDB(configs);
                 alert("Elemento eliminado")
-                // Se oculta el modal
+                    // Se oculta el modal
                 modal.style.display = "none"
             })
         }
     }
 })
 
-span.addEventListener("click", e=>{
+span.addEventListener("click", e => {
     e.preventDefault();
     modal.style.display = "none";
 })

@@ -119,7 +119,7 @@ ul {
     }
 }
 
-#last-elem {
+.last-elem {
     background-color: red;
     list-style: url("../img/outline_arrow_forward_black_24dp.png");
 }
@@ -310,7 +310,7 @@ td {
 }
 
 .workspace {
-    width: 400px;
+    width: 900px;
     align-items: center;
     border: 1px solid black;
     border-radius: 5px;

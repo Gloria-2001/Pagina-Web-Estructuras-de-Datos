@@ -71,6 +71,7 @@ var span = document.getElementById("close-span");
 var queue = new Queue()
 
 function showQueue() {
+    msg_new.style.display = "none";
     let elems = queue.getQueue()
     let size = elems.length
     my_list = `<li id="head">-></li>`
