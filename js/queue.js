@@ -110,7 +110,7 @@ async function waitDequeue() {
 }
 btn_remove.addEventListener("click", async(e) => {
     e.preventDefault();
-    var out = document.getElementById("first-enqueue");
+    var out = document.getElementById("last-elem");
     // Cambiamos ID
     out.id = "last-dequeue"
     my_code.innerText = queue.codeDequeue();

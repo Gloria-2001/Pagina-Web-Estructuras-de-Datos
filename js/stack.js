@@ -128,7 +128,7 @@ btn_save.addEventListener('click', e => {
         createProWebDB(dirSave);
     else
         saveInDB(dirSave)
-    alert(`Configuración guardad con el nombre de ${nameStr}`)
+    alert(`Configuración guardada con el nombre de ${nameStr}`)
 });
 
 /**

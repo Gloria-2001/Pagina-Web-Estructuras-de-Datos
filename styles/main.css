@@ -325,6 +325,14 @@ td {
     border-radius: 5px;
 }
 
+#stack{
+    align-items: left;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+}
+
 .buttons {
     width: 100px;
     height: 30px;
