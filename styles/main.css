@@ -332,6 +332,14 @@ td {
     border-radius: 5px;
 }
 
+#codeList{
+    align-items: left;
+    border: 1px solid black;
+    width: 400px;
+    height: 450px;
+    border-radius: 5px;
+}
+
 #stack{
     align-items: left;
     border: 1px solid black;
@@ -349,4 +357,8 @@ td {
     background-color: crimson;
     color: white;
     border-color: crimson;
+}
+
+#remove-element{
+    width: 150px;
 }
