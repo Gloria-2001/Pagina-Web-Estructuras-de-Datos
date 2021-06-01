@@ -27,7 +27,14 @@ ul {
 
 .first-elem {
     background-color: rgb(11, 218, 11);
-    list-style: url("../img/outline_arrow_forward_black_24dp.png");
+    /*list-style: url("../img/outline_arrow_forward_black_24dp.png");*/
+}
+
+
+#flechaArriba{
+    width: 20px;
+    height: 20px;
+    margin-left: 45%;
 }
 
 #first-stack {

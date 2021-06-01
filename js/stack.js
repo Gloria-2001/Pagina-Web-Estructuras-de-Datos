@@ -71,8 +71,11 @@ function showStack() {
     let elems = stack.getStack()
     let size = elems.length
     new_list = `<li id="head">_</li><li class="first-elem" id="first-stack">${elems[size-1]}</li>`
-    for (let i = size - 2; i >= 0; i--)
+    arrow_up=`<img src="../img/flecha-hacia-arriba.png" id="flechaArriba">`
+    for (let i = size - 2; i >= 0; i--){
+        new_list += arrow_up
         new_list += `<li>${elems[i]}</li>`
+    }
     par.innerHTML = new_list;
 }
 
