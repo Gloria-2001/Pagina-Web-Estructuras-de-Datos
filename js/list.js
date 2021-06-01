@@ -1,50 +1,50 @@
-class List{
-    constructor(){
+class List {
+    constructor() {
         this.values = []
     }
-    append(e){
+    append(e) {
         // Se agrega un elemento al final de la lista
-        this.values.splice(0,0,e)
+        this.values.splice(0, 0, e)
     }
-    appendBack(e){
+    appendBack(e) {
         this.values.push(e);
     }
-    appendIndex(index, e){
-        if(index > this.values.length-1){
+    appendIndex(index, e) {
+        if (index > this.values.length - 1) {
             this.values.push(e);
-        }else{
-            this.values.splice(index,0,e)
+        } else {
+            this.values.splice(index, 0, e)
         }
     }
-    remove(){
+    remove() {
         return this.values.pop();
     }
-    removeIndex(index){
-        if(index > this.values.length-1){
+    removeIndex(index) {
+        if (index > this.values.length - 1) {
             return this.remove();
-        }else{
-            return this.values.splice(index,1);
+        } else {
+            return this.values.splice(index, 1);
         }
     }
-    removeElement(e){
+    removeElement(e) {
         let index = this.values.indexOf(e);
         let value = -1
-        // Si no se encuentra un elemento a eliminar
-        // devuelve -1, sino, se regresa el momento eliminado
-        if (index < 0){
-            value = this.values.splice(index,1);
+            // Si no se encuentra un elemento a eliminar
+            // devuelve -1, sino, se regresa el momento eliminado
+        if (index >= 0) {
+            value = this.values.splice(index, 1);
         }
         return value;
     }
-    getList(){
+    getList() {
         // Regresa la lista
         return this.values
     }
-    setList(arr){
+    setList(arr) {
         this.values = arr;
     }
-    
-    codeAppendBack (){
+
+    codeAppendBack() {
         return `
     void appendBack(List *l, int elem){
     Node *newNodo = (Node *)malloc(Node);
@@ -59,8 +59,8 @@ class List{
     }
       } `
     }
-    
-    codeAppendFront(){
+
+    codeAppendFront() {
         return `
     void appendFront(List *l, int elem){
     Node *newNodo = (Node *)malloc(Node);
@@ -74,10 +74,10 @@ class List{
         l->ptrInit = newNodo;
     }
 }`
-    } 
-    
-    codeAppendIndex(){
-        return`
+    }
+
+    codeAppendIndex() {
+        return `
 void appendIndex(List *l, int elem, int index){
     Node *newNodo = (Node *)malloc(Node);
     newNodo->data = elem;
@@ -102,9 +102,9 @@ void appendIndex(List *l, int elem, int index){
             if(aux == l->ptrBack){
                 l->ptrBack = newNodo;}}}}`
     }
-    
-    codeRemoveBack(){
-        return`
+
+    codeRemoveBack() {
+        return `
     int removeBack(List *l){
     int elem = -1;
     if(isEmpty(l)){
@@ -118,9 +118,9 @@ void appendIndex(List *l, int elem, int index){
         free(del);}
     return elem;}`
     }
-    
-    codeRemoveElement(){
-        return`
+
+    codeRemoveElement() {
+        return `
   int removeElement(Lista *l, int elem){
     int elemReturn = -1;
     int isInList = 0;
@@ -147,8 +147,8 @@ void appendIndex(List *l, int elem, int index){
         free(aux);}
     return elemReturn;}`
     }
-    
-    codeRemoveIndex(){
+
+    codeRemoveIndex() {
         return `
       int removeIndex(List *l, int index){
     int elem = -1, i = 1;
@@ -174,9 +174,9 @@ void appendIndex(List *l, int elem, int index){
         free(aux);}
     return elem;}`
     }
-    
-    
-    
+
+
+
 }
 
 var par = document.getElementById("show");
@@ -201,16 +201,16 @@ var lista = new List()
 function showList() {
     let elems = lista.getList()
     let my_list = `<li id="head">-></li>`
-    
+
     elems.forEach(e => {
         my_list += `<li>${e}</li>`
     });
-    
+
     my_list += `<li id="back">_</li>`
     par.innerHTML = my_list
 }
 
-btn_add.addEventListener("click", e=>{
+btn_add.addEventListener("click", e => {
     e.preventDefault()
     let elem = prompt("Ingrese un elemento");
     lista.append(elem);
@@ -226,23 +226,23 @@ btn_add_back.addEventListener("click", e => {
     showList();
 })
 
-btn_add_index.addEventListener("click", e=>{
+btn_add_index.addEventListener("click", e => {
     e.preventDefault();
     let elem = prompt("Ingrese un elemento");
     let index = prompt("Ingrese la posición de la lista");
-    lista.appendIndex(parseInt(index),elem);
+    lista.appendIndex(parseInt(index), elem);
     my_code.innerText = lista.codeAppendIndex();
     showList();
 })
 
-btn_remove.addEventListener("click", e=>{
+btn_remove.addEventListener("click", e => {
     e.preventDefault();
     lista.remove()
     my_code.innerText = lista.codeRemoveBack();
     showList();
 })
 
-btn_remove_index.addEventListener("click", e=>{
+btn_remove_index.addEventListener("click", e => {
     e.preventDefault();
     let index = prompt("Ingrese la posición de la lista a eliminar");
     let v = lista.removeIndex(index);
@@ -250,11 +250,11 @@ btn_remove_index.addEventListener("click", e=>{
     showList();
 })
 
-btn_remove_element.addEventListener("click" ,e=>{
+btn_remove_element.addEventListener("click", e => {
     e.preventDefault();
-    let elem =  prompt("Ingrese el elemento a eliminar")
+    let elem = prompt("Ingrese el elemento a eliminar")
     let v = lista.removeElement(elem);
-    if(v<0)
+    if (v < 0)
         alert(`Elemento ${elem} no encontrado`)
     my_code.innerText = lista.codeRemoveElement();
     showList();
