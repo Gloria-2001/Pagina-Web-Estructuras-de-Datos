@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/indexStyle.css">
     <title>List</title>
 </head>
+<header>
+    <img src="../img/logoIPN.png" alt="" class="escuela" id="ipn">
+    <p id="parrafoEscuela">Instituto Politécnico Nacional<br>Escuela Superior de Cómputo</p>
+    <img src="../img/logoESCOM.png" alt="" class="escuela" id="escom">
+</header>
 <body>
     <h1>Lista</h1>
-    <button id="add">Append Front</button>
-    <button id="add-back">Append Back</button>
-    <button id="add-index">Append Index</button>
-    <button id="remove">Remove Back</button>
-    <button id="remove-index">Remove Index</button>
-    <button id="remove-element">Remove Element</button>
-    <button id="save">Guardar</button>
-    <button id="load">Cargar</button>
+    <button id="add" class="buttons">Append Front</button>
+    <button id="add-back" class="buttons">Append Back</button>
+    <button id="add-index" class="buttons">Append Index</button>
+    <button id="remove" class="buttons">Remove Back</button>
+    <button id="remove-index" class="buttons">Remove Index</button>
+    <button id="remove-element" class="buttons">Remove Element</button>
+    <button id="save" class="buttons">Guardar</button>
+    <button id="load" class="buttons">Cargar</button>
+    <button id="new" class="buttons">Nuevo</button>
     <div id="my-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -26,10 +33,24 @@
             <p id="text-modal"></p>
         </div>
     </div>
-    <div>
-        <h3 id="msg_new">Lista nueva creada para usarse</h3>
-        <ul id="show" class="horizontal"></ul>
+    <div class="container">
+        <div class="workspace">
+            <h3 id="msg_new">Lista nueva para usar</h3>
+            <ul id="show" class="horizontal"></ul>
+        </div>
+        <div class="code">
+            <h3>Código</h3>
+            <pre id="c-code"></pre>
+        </div>
     </div>
     <script src="../js/list.js"></script>
 </body>
+<footer>
+    <div class="firma">
+        <img src="../img/outline_copyright_white_24dp.png" alt="" id="copyright">
+    </div>
+    <div class="firma">
+        <p>Copyright, 2021</p>
+    </div>
+</footer>
 </html>
