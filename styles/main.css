@@ -63,6 +63,19 @@ ul {
     background-color: red;
 }
 
+#first-list {
+    position: relative;
+    animation-name: enter2;
+    animation-duration: 3s;
+}
+
+#last-list {
+    position: relative;
+    animation-name: out2;
+    animation-duration: 3s;
+    background-color: red;
+}
+
 
 /*Animation for push in the stack*/
 
@@ -112,7 +125,7 @@ ul {
 }
 
 
-/*Animation for pop from the stack*/
+/*Animation from list*/
 
 @keyframes out1 {
     0% {
@@ -126,6 +139,32 @@ ul {
     }
 }
 
+@keyframes enter2 {
+    0% {
+        left: -100px;
+    }
+    50% {
+        left: 5px;
+    }
+    100% {
+        left: 5px;
+    }
+}
+
+
+/*Animation for pop from the stack*/
+
+@keyframes out2 {
+    0% {
+        left: 5px;
+    }
+    50% {
+        left: 5px;
+    }
+    100% {
+        left: 300px;
+    }
+}
 .last-elem {
     background-color: red;
     list-style: url("../img/outline_arrow_forward_black_24dp.png");
