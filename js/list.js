@@ -31,7 +31,7 @@ class List{
         let value = -1
         // Si no se encuentra un elemento a eliminar
         // devuelve -1, sino, se regresa el momento eliminado
-        if (index < 0){
+        if (index => 0){
             value = this.values.splice(index,1);
         }
         return value;
@@ -207,22 +207,24 @@ var show = document.getElementById("show")
 var lista = new List()
 
 function showList() {
+    msg_new.style.display = "none";
     let elems = lista.getList()
-    let my_list = `<li id="head">-></li>`
-    
+    let size = elems.length
+    let my_list = `<li id="head">_</li>`
     elems.forEach(e => {
-        my_list += `<li>${e}</li>`
+        my_list += `<li class="first-elem" id="first-list" >${e}</li>`
     });
     
-    my_list += `<li id="back">_</li>`
-    par.innerHTML = my_list
+    my_list += `<li id="last-elem" id="back">null</li>`
+    par.innerHTML = my_list;
 }
+
 
 btn_new.addEventListener("click", e => {
     e.preventDefault();
     lista.setList([]);
     msg_new.style.display = "block"
-    show.innerHTML = "";
+    show.innerHTML = ""
 })
 
 
@@ -252,29 +254,55 @@ btn_add_index.addEventListener("click", e=>{
     showList();
 })
 
-btn_remove.addEventListener("click", e=>{
-    e.preventDefault();
-    lista.remove()
-    my_code.innerText = lista.codeRemoveBack();
+async function waitRemove() {
+    let elem = lista.remove();
+    alert(`Elemento sacado: ${elem}`);
     showList();
+}
+
+btn_remove.addEventListener("click", async(e) =>{
+    e.preventDefault();
+    var out = document.getElementById("last-elem");
+    // Cambiamos ID
+    out.id = "last-list"
+    my_code.innerText = lista.codeRemoveBack();
+    // Retrasamos la actualización de los datos
+    await setTimeout(waitRemove, 2000);
 })
 
-btn_remove_index.addEventListener("click", e=>{
-    e.preventDefault();
+async function waitRemoveindex() {
     let index = prompt("Ingrese la posición de la lista a eliminar");
     let v = lista.removeIndex(index);
-    my_code.innerText = lista.codeRemoveIndex();
+    alert(`Elemento sacado: ${v}`);
     showList();
+}
+
+btn_remove_index.addEventListener("click", async (e)=>{
+    var out = document.getElementById("last-elem");
+    // Cambiamos ID
+    out.id = "last-list"
+    my_code.innerText = lista.codeRemoveIndex();
+    // Retrasamos la actualización de los datos
+    await setTimeout(waitRemoveindex,2000);
+    
 })
 
-btn_remove_element.addEventListener("click", e => {
-    e.preventDefault();
+async function waitRemoveelement() {
     let elem = prompt("Ingrese el elemento a eliminar")
     let v = lista.removeElement(elem);
+    alert(`Elemento sacado: ${v}`);
     if (v < 0)
         alert(`Elemento ${elem} no encontrado`)
-    my_code.innerText = lista.codeRemoveElement();
     showList();
+}
+
+btn_remove_element.addEventListener("click", async (e) => {
+    var out = document.getElementById("last-elem");
+    // Cambiamos ID
+    out.id = "last-list"
+    my_code.innerText = lista.codeRemoveElement();
+    await setTimeout(waitRemoveelement, 2000);
+
 })
 
 /**
