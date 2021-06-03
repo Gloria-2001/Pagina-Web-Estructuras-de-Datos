@@ -72,19 +72,21 @@ var queue = new Queue()
 
 function showQueue() {
     msg_new.style.display = "none";
-    let elems = queue.getQueue()
-    let size = elems.length
-    my_list = `<li id="head">🠖</li>`
+    let elems = queue.getQueue();
+    let size = elems.length;
+    arrow_right = `<li id="img1"><img src="../img/flecha-hacia-derecha.png" class="flechaDerecha"></li>`
+    my_list = `<li id="head1"></li>`
     if (size === 1) {
-        my_list += `<li id="head">_</li><li id="last-elem" class="first-elem">${elems[size-1]}</li>`
+        my_list += `<li id="last-elem" class="first-elem">${elems[size-1]}</li>`;
     } else {
         my_list += `<li class="first-elem" id="first-enqueue">${elems[size-1]}</li>`
-        for (let i = size - 2; i >= 1; i--)
+        my_list += arrow_right;
+        for (let i = size - 2; i >= 1; i--) {
             my_list += `<li>${elems[i]}</li>`
+            my_list += arrow_right;
+        }
         my_list += `<li id="last-elem">${elems[0]}</li>`
     }
-
-    my_list += `<li id="back">🠖</li>`
     show.innerHTML = my_list;
 }
 

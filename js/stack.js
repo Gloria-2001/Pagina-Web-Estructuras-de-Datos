@@ -67,12 +67,12 @@ var span = document.getElementById("close-span");
 var stack = new Stack();
 
 function showStack() {
-    msg_new.style.display = "none"
+    msg_new.style.display = "none";
     let elems = stack.getStack()
     let size = elems.length
     new_list = `<li id="head">_</li><li class="first-elem" id="first-stack">${elems[size-1]}</li>`
-    arrow_up=`<img src="../img/flecha-hacia-abajo.png" id="flechaAbajo">`
-    for (let i = size - 2; i >= 0; i--){
+    arrow_up = `<img src="../img/flecha-hacia-abajo.png" id="flechaAbajo">`
+    for (let i = size - 2; i >= 0; i--) {
         new_list += arrow_up
         new_list += `<li>${elems[i]}</li>`
     }
