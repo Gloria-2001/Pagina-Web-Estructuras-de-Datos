@@ -1,3 +1,4 @@
+<<<<<<< HEAD
         .big-text {
             font-size: 2em;
         }
@@ -360,3 +361,408 @@
         #remove-element {
             width: 150px;
         }
+=======
+.big-text {
+    font-size: 2em;
+}
+
+.title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    color: darkorange;
+    text-decoration: none;
+}
+
+li {
+    font-size: 2em;
+    text-align: center;
+    border-style: solid;
+    list-style: none;
+    list-style-type: none;
+}
+
+ul {
+    width: 50%;
+    list-style: none;
+    border-style: none;
+    border-top: 0em;
+    margin-left: 100px;
+}
+
+.first-elem {
+    background-color: rgb(11, 218, 11);
+    /*list-style: url("../img/outline_arrow_forward_black_24dp.png");*/
+}
+
+
+#flechaAbajo{
+    width: 20px;
+    height: 20px;
+    margin-left: 45%;
+}
+
+#first-stack {
+    position: relative;
+    animation-name: enter;
+    animation-duration: 2s;
+}
+
+#last-stack {
+    position: relative;
+    animation-name: out;
+    animation-duration: 2s;
+    background-color: red;
+}
+
+#first-enqueue {
+    position: relative;
+    animation-name: enter1;
+    animation-duration: 2s;
+}
+
+#last-dequeue {
+    position: relative;
+    animation-name: out1;
+    animation-duration: 2s;
+    background-color: red;
+}
+
+#first-list {
+    position: relative;
+    animation-name: enter2;
+    animation-duration: 3s;
+}
+
+#last-list {
+    position: relative;
+    animation-name: out2;
+    animation-duration: 3s;
+    background-color: red;
+}
+
+
+/*Animation for push in the stack*/
+
+@keyframes enter {
+    0% {
+        left: -100px;
+        top: -150px;
+    }
+    50% {
+        left: 5px;
+        top: -150px;
+    }
+    100% {
+        left: 5px;
+        top: 5px;
+    }
+}
+
+
+/*Animation for pop from the stack*/
+
+@keyframes out {
+    0% {
+        left: 5px;
+        top: 5px;
+    }
+    50% {
+        left: 5px;
+        top: -150px;
+    }
+    100% {
+        left: 300px;
+        top: -150px;
+    }
+}
+
+@keyframes enter1 {
+    0% {
+        left: -100px;
+    }
+    50% {
+        left: 5px;
+    }
+    100% {
+        left: 5px;
+    }
+}
+
+
+/*Animation from list*/
+
+@keyframes out1 {
+    0% {
+        left: 5px;
+    }
+    50% {
+        left: 5px;
+    }
+    100% {
+        left: 300px;
+    }
+}
+
+@keyframes enter2 {
+    0% {
+        left: -100px;
+    }
+    50% {
+        left: 5px;
+    }
+    100% {
+        left: 5px;
+    }
+}
+
+
+/*Animation for pop from the stack*/
+
+@keyframes out2 {
+    0% {
+        left: 5px;
+    }
+    50% {
+        left: 5px;
+    }
+    100% {
+        left: 300px;
+    }
+}
+.last-elem {
+    background-color: red;
+    list-style: url("../img/outline_arrow_forward_black_24dp.png");
+}
+
+#head {
+    border-style: solid;
+    color: white;
+    border-top: 0em;
+    border-color: black;
+}
+
+#back {
+    border-style: solid;
+    color: white;
+    border-bottom: 0em;
+    border-color: black;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 2em;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+/* Modal Header */
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: purple;
+}
+
+#text-head {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+}
+
+#text-modal {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.load-conf,
+.delete-conf {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: darkcyan;
+    border-color: darkcyan;
+    color: white;
+}
+
+
+/* Modal Footer */
+
+.modal-footer {
+    padding: 2px 16px;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#accept {
+    color: white;
+    background-color: #5cb85c;
+}
+
+#cancel {
+    color: white;
+    background-color: red;
+}
+
+button {
+    margin: 0.5em;
+}
+
+button:hover,
+button:focus {
+    cursor: pointer;
+}
+
+
+/* Add Animation */
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+table {
+    width: 100%;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+#save,
+#load,
+#new {
+    float: right;
+}
+
+.horizontal {
+    width: 100% !important;
+}
+
+.horizontal li {
+    display: inline;
+    float: left;
+    width: 2em;
+}
+
+.horizontal #head {
+    border: solid black;
+    border-left: 0em !important;
+    color: black;
+}
+
+.horizontal #back {
+    border: solid black;
+    border-right: 0em !important;
+    color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.workspace {
+    width: 900px;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 400px;
+}
+
+.code {
+    align-items: left;
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+    border-radius: 5px;
+}
+
+#codeList{
+    align-items: left;
+    border: 1px solid black;
+    width: 400px;
+    height: 450px;
+    border-radius: 5px;
+}
+
+#stack{
+    align-items: left;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+}
+
+.buttons {
+    width: 100px;
+    height: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    border-radius: 10px;
+    background-color: crimson;
+    color: white;
+    border-color: crimson;
+}
+
+#remove-element{
+    width: 150px;
+}
+>>>>>>> aae3a52ca5e2fe2dd0bb1da3777ef3058bb8bf44

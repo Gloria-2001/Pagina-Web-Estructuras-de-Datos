@@ -1,50 +1,50 @@
-class List {
-    constructor() {
+class List{
+    constructor(){
         this.values = []
     }
-    append(e) {
+    append(e){
         // Se agrega un elemento al final de la lista
-        this.values.splice(0, 0, e)
+        this.values.splice(0,0,e)
     }
-    appendBack(e) {
+    appendBack(e){
         this.values.push(e);
     }
-    appendIndex(index, e) {
-        if (index > this.values.length - 1) {
+    appendIndex(index, e){
+        if(index > this.values.length-1){
             this.values.push(e);
-        } else {
-            this.values.splice(index, 0, e)
+        }else{
+            this.values.splice(index,0,e)
         }
     }
-    remove() {
+    remove(){
         return this.values.pop();
     }
-    removeIndex(index) {
-        if (index > this.values.length - 1) {
+    removeIndex(index){
+        if(index > this.values.length-1){
             return this.remove();
-        } else {
-            return this.values.splice(index, 1);
+        }else{
+            return this.values.splice(index,1);
         }
     }
-    removeElement(e) {
+    removeElement(e){
         let index = this.values.indexOf(e);
         let value = -1
-            // Si no se encuentra un elemento a eliminar
-            // devuelve -1, sino, se regresa el momento eliminado
-        if (index >= 0) {
-            value = this.values.splice(index, 1);
+        // Si no se encuentra un elemento a eliminar
+        // devuelve -1, sino, se regresa el momento eliminado
+        if (index => 0){
+            value = this.values.splice(index,1);
         }
         return value;
     }
-    getList() {
+    getList(){
         // Regresa la lista
         return this.values
     }
-    setList(arr) {
+    setList(arr){
         this.values = arr;
     }
-
-    codeAppendBack() {
+    
+    codeAppendBack (){
         return `
     void appendBack(List *l, int elem){
     Node *newNodo = (Node *)malloc(Node);
@@ -59,8 +59,8 @@ class List {
     }
       } `
     }
-
-    codeAppendFront() {
+    
+    codeAppendFront(){
         return `
     void appendFront(List *l, int elem){
     Node *newNodo = (Node *)malloc(Node);
@@ -74,10 +74,10 @@ class List {
         l->ptrInit = newNodo;
     }
 }`
-    }
-
-    codeAppendIndex() {
-        return `
+    } 
+    
+    codeAppendIndex(){
+        return`
 void appendIndex(List *l, int elem, int index){
     Node *newNodo = (Node *)malloc(Node);
     newNodo->data = elem;
@@ -102,9 +102,9 @@ void appendIndex(List *l, int elem, int index){
             if(aux == l->ptrBack){
                 l->ptrBack = newNodo;}}}}`
     }
-
-    codeRemoveBack() {
-        return `
+    
+    codeRemoveBack(){
+        return`
     int removeBack(List *l){
     int elem = -1;
     if(isEmpty(l)){
@@ -118,9 +118,9 @@ void appendIndex(List *l, int elem, int index){
         free(del);}
     return elem;}`
     }
-
-    codeRemoveElement() {
-        return `
+    
+    codeRemoveElement(){
+        return`
   int removeElement(Lista *l, int elem){
     int elemReturn = -1;
     int isInList = 0;
@@ -147,8 +147,8 @@ void appendIndex(List *l, int elem, int index){
         free(aux);}
     return elemReturn;}`
     }
-
-    codeRemoveIndex() {
+    
+    codeRemoveIndex(){
         return `
       int removeIndex(List *l, int index){
     int elem = -1, i = 1;
@@ -174,9 +174,9 @@ void appendIndex(List *l, int elem, int index){
         free(aux);}
     return elem;}`
     }
-
-
-
+    
+    
+    
 }
 
 var par = document.getElementById("show");
@@ -192,6 +192,14 @@ const btn_add_index = document.getElementById("add-index")
 const btn_remove = document.getElementById("remove")
 const btn_remove_index = document.getElementById("remove-index")
 const btn_remove_element = document.getElementById("remove-element")
+const btn_save = document.getElementById("save");
+const btn_load = document.getElementById("load");
+const btn_new = document.getElementById("new");
+
+// Get the modal
+var modal = document.getElementById("my-modal");
+// Get the <span> element that closes the modal
+var span = document.getElementById("close-span");
 
 
 var show = document.getElementById("show")
@@ -199,18 +207,29 @@ var show = document.getElementById("show")
 var lista = new List()
 
 function showList() {
+    msg_new.style.display = "none";
     let elems = lista.getList()
-    let my_list = `<li id="head">-></li>`
-
+    let size = elems.length
+    let my_list = `<li id="head">_</li>`
     elems.forEach(e => {
-        my_list += `<li>${e}</li>`
+        my_list += `<li class="first-elem" id="first-list" >${e}</li>`
     });
-
-    my_list += `<li id="back">_</li>`
-    par.innerHTML = my_list
+    
+    my_list += `<li id="last-elem" id="back">null</li>`
+    par.innerHTML = my_list;
 }
 
-btn_add.addEventListener("click", e => {
+
+btn_new.addEventListener("click", e => {
+    e.preventDefault();
+    lista.setList([]);
+    msg_new.style.display = "block"
+    show.innerHTML = ""
+})
+
+
+
+btn_add.addEventListener("click", e=>{
     e.preventDefault()
     let elem = prompt("Ingrese un elemento");
     lista.append(elem);
@@ -226,36 +245,179 @@ btn_add_back.addEventListener("click", e => {
     showList();
 })
 
-btn_add_index.addEventListener("click", e => {
+btn_add_index.addEventListener("click", e=>{
     e.preventDefault();
     let elem = prompt("Ingrese un elemento");
     let index = prompt("Ingrese la posición de la lista");
-    lista.appendIndex(parseInt(index), elem);
+    lista.appendIndex(parseInt(index),elem);
     my_code.innerText = lista.codeAppendIndex();
     showList();
 })
 
-btn_remove.addEventListener("click", e => {
-    e.preventDefault();
-    lista.remove()
-    my_code.innerText = lista.codeRemoveBack();
+async function waitRemove() {
+    let elem = lista.remove();
+    alert(`Elemento sacado: ${elem}`);
     showList();
+}
+
+btn_remove.addEventListener("click", async(e) =>{
+    e.preventDefault();
+    var out = document.getElementById("last-elem");
+    // Cambiamos ID
+    out.id = "last-list"
+    my_code.innerText = lista.codeRemoveBack();
+    // Retrasamos la actualización de los datos
+    await setTimeout(waitRemove, 2000);
 })
 
-btn_remove_index.addEventListener("click", e => {
-    e.preventDefault();
+async function waitRemoveindex() {
     let index = prompt("Ingrese la posición de la lista a eliminar");
     let v = lista.removeIndex(index);
-    my_code.innerText = lista.codeRemoveIndex();
+    alert(`Elemento sacado: ${v}`);
     showList();
+}
+
+btn_remove_index.addEventListener("click", async (e)=>{
+    var out = document.getElementById("last-elem");
+    // Cambiamos ID
+    out.id = "last-list"
+    my_code.innerText = lista.codeRemoveIndex();
+    // Retrasamos la actualización de los datos
+    await setTimeout(waitRemoveindex,2000);
+    
 })
 
-btn_remove_element.addEventListener("click", e => {
-    e.preventDefault();
+async function waitRemoveelement() {
     let elem = prompt("Ingrese el elemento a eliminar")
     let v = lista.removeElement(elem);
+    alert(`Elemento sacado: ${v}`);
     if (v < 0)
         alert(`Elemento ${elem} no encontrado`)
-    my_code.innerText = lista.codeRemoveElement();
     showList();
+}
+
+btn_remove_element.addEventListener("click", async (e) => {
+    var out = document.getElementById("last-elem");
+    // Cambiamos ID
+    out.id = "last-list"
+    my_code.innerText = lista.codeRemoveElement();
+    await setTimeout(waitRemoveelement, 2000);
+
+})
+
+/**
+ * Se crea un objeto de llaves donde se guardara el nombre y los
+ * datos contenidos en la pila.
+ * 
+ * Se pregunta si la llave "stack_db" existe, si no existe
+ * se creara la llave, de otro modo, se agregara a la lista de
+ * la llave stack_db
+ */
+btn_save.addEventListener('click', e => {
+    e.preventDefault()
+    let nameStr = prompt("Nombre de la estructura")
+    let dirSave = {
+        name: nameStr,
+        data: lista.getList()
+    };
+    if (localStorage.getItem("list_db") === null)
+        createProWebDB(dirSave);
+    else
+        saveInDB(dirSave)
+    alert(`Configuración guardada con el nombre de ${nameStr}`)
+});
+
+/**
+ * @breaf Se crea la llave para guardar la configuracion
+ * @param dirSave configuracion a guardar
+ * 
+ */
+function createProWebDB(dirSave) {
+    // JSON.stringify pasa todo a un JSON que pueda comprender
+    // el local storage
+    localStorage.setItem("list_db", JSON.stringify([dirSave]))
+}
+
+/**
+ * @brief se accede a la llave con la lista y se agrega
+ * la nueva configuracion a la lista
+ * @param dirSave configuracion a guardar
+ */
+function saveInDB(dirSave) {
+    let listSaved = JSON.parse(localStorage.getItem("list_db"));
+    listSaved.push(dirSave);
+    localStorage.setItem("list_db", JSON.stringify(listSaved));
+}
+
+/**
+ * @brief Se accede a la llave con la lista de los datos
+ * almacenados y se sustituye por otra lista, con un dato
+ * menos (el que se desidio eliminar)
+ * @param configs lista de configuraciones
+ */
+function updateAllDB(configs) {
+    localStorage.setItem("list_db", JSON.stringify(configs));
+}
+
+
+/**
+ * @breaf Se solicitan todos los datos guardados 
+ * en el local storage para visualizar los nombres y
+ * elegir la configuración para poder visualizarla de nuevo
+ */
+btn_load.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById("text-head").innerHTML = "Elegir configuración";
+
+    // Se construye una tabla en html desde js
+    txt = "<table><tr><th>No.</th><th>Nombre</th><th>Aciones</th></tr>"
+    list_conf = localStorage.getItem("list_db")
+    if (list_conf !== null) {
+        configs = JSON.parse(list_conf)
+        size = configs.length
+        for (let i = 0; i < size; i++) {
+            txt += "<tr>"
+            txt += `<td>${i+1}</td><td>${configs[i]["name"]}</td>`
+            txt += `<td><button class="load-conf" value=${i}>Cargar</button><button class="delete-conf" value=${i}>Eliminar</button></td>`
+            txt += "<tr>"
+        }
+        txt += "</table>"
+        document.getElementById("text-modal").innerHTML = txt;
+
+        // Se visualiza el modal
+        modal.style.display = "block"
+
+        // Se está a la escucha de cada uno de los botones creados
+        // para la tabla
+        let btns_load = document.getElementsByClassName("load-conf")
+        let size_btns = btns_load.length
+            // btns_load son botones para cargar una configuracion 
+        for (let i = 0; i < size_btns; i++) {
+            btns_load[i].addEventListener("click", e => {
+                e.preventDefault()
+                lista.setList(configs[btns_load[i].value]["data"]);
+                // Se oculta el modal
+                modal.style.display = "none"
+                showList();
+            })
+        }
+
+        // btns_delete son botones para eliminar una configuracion
+        let btns_delete = document.getElementsByClassName("delete-conf")
+        for (let i = 0; i < size_btns; i++) {
+            btns_delete[i].addEventListener("click", e => {
+                e.preventDefault()
+                configs.splice(btns_load[i].value, 1)
+                updateAllDB(configs);
+                alert("Elemento eliminado")
+                    // Se oculta el modal
+                modal.style.display = "none"
+            })
+        }
+    }
+})
+
+span.addEventListener("click", e => {
+    e.preventDefault();
+    modal.style.display = "none";
 })
