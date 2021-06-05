@@ -206,16 +206,38 @@ var show = document.getElementById("show")
 
 var lista = new List()
 
-function showList() {
+function showList(position, action) {
+    console.log(action);
     msg_new.style.display = "none";
     let elems = lista.getList()
     let size = elems.length
-    let my_list = `<li id="head">_</li>`
-    elems.forEach(e => {
-        my_list += `<li class="first-elem" id="first-list" >${e}</li>`
+    let my_list = `<li id="head1">_</li>`
+    arrow_right = `<li id="img1"><img src="../img/flecha-hacia-derecha.png" class="flechaDerecha"></li>`
+    elems.forEach((e,index ) => {
+        let id="first-elem"
+        if(size){
+            id="first-li"    
+        }
+        if(index+1==size){
+            id="last-li"    
+        }
+        if(index==0){
+            id="first"    
+        }
+        if (position !== undefined && position == index && action !== undefined && action == 'add') {
+            id="index-li"
+        }
+        if (position !== undefined && position == index && action !== undefined && action == 'remove') {
+            id="last-list"
+        }
+        if (position !== undefined && position == e && action !== undefined && action == 'element') {
+            id="last-list"
+        }
+        my_list += `<li class="first-elem" id="${id}">${e}</li>`
+        my_list += arrow_right;
     });
     
-    my_list += `<li id="last-elem" id="back">null</li>`
+    my_list += `<li id="back">null</li>`
     par.innerHTML = my_list;
 }
 
@@ -227,81 +249,110 @@ btn_new.addEventListener("click", e => {
     show.innerHTML = ""
 })
 
+async function waitAdd(elem) {
+    let v=lista.append(elem);
+    console.log(v);
+    alert(`Elemento insertado: ${elem}`);
+    showList();
+    let first=document.getElementById("first");
+    first.id="first-list";
+    
+}
 
-
-btn_add.addEventListener("click", e=>{
+btn_add.addEventListener("click", async(e)=>{
     e.preventDefault()
     let elem = prompt("Ingrese un elemento");
-    lista.append(elem);
+    //var out= document.getElementById("first-li");
+    // Cambiamos ID
+    //out.id = "first-list"
     my_code.innerText = lista.codeAppendFront();
-    showList();
+    await setTimeout(()=>{ waitAdd(elem) },2000);
 })
 
-btn_add_back.addEventListener("click", e => {
+async function waitBack(elem) {
+    let v=lista.appendBack(elem);
+    console.log(v);
+    alert(`Elemento insertado: ${elem}`);
+    showList();
+    let last=document.getElementById("last-li");
+    last.id="first-stack";
+    
+}
+
+btn_add_back.addEventListener("click", async(e) => {
     e.preventDefault();
     let elem = prompt("Ingrese un elemento");
-    lista.appendBack(elem);
+    //var out = document.getElementById("last-li");
+    // Cambiamos ID
+    //out.id = "first-stack"   
     my_code.innerText = lista.codeAppendBack();
-    showList();
+    await setTimeout(()=>{ waitBack(elem) },2000);
 })
 
-btn_add_index.addEventListener("click", e=>{
+async function waitIndex(index,elem) {
+    let v=lista.appendIndex(parseInt(index),elem);
+    console.log(v);
+    alert(`Elemento insertado: ${elem}`);
+    showList(parseInt(index), 'add');
+    let last=document.getElementById("index-li");
+    last.id="first-stack";
+    
+}
+btn_add_index.addEventListener("click", async(e)=>{
     e.preventDefault();
     let elem = prompt("Ingrese un elemento");
     let index = prompt("Ingrese la posición de la lista");
-    lista.appendIndex(parseInt(index),elem);
+    //lista.appendIndex(parseInt(index),elem);
     my_code.innerText = lista.codeAppendIndex();
-    showList();
+    await setTimeout(()=>{ waitIndex(index,elem) },2000);
 })
 
 async function waitRemove() {
     let elem = lista.remove();
+    console.log(elem);
     alert(`Elemento sacado: ${elem}`);
     showList();
 }
 
 btn_remove.addEventListener("click", async(e) =>{
     e.preventDefault();
-    var out = document.getElementById("last-elem");
+    var out = document.getElementById("last-li");
     // Cambiamos ID
     out.id = "last-list"
     my_code.innerText = lista.codeRemoveBack();
     // Retrasamos la actualización de los datos
-    await setTimeout(waitRemove, 2000);
+    await setTimeout(waitRemove,2000);
 })
 
-async function waitRemoveindex() {
-    let index = prompt("Ingrese la posición de la lista a eliminar");
-    let v = lista.removeIndex(index);
-    alert(`Elemento sacado: ${v}`);
+async function waitRemoveindex(index) {
+    //let index = prompt("Ingrese la posición de la lista a eliminar");
+    await showList(parseInt(index), 'remove');
+    await alert(`Elemento sacado: ${lista.removeIndex(index)}`);
     showList();
 }
 
 btn_remove_index.addEventListener("click", async (e)=>{
-    var out = document.getElementById("last-elem");
-    // Cambiamos ID
-    out.id = "last-list"
+    e.preventDefault();
+    let index = prompt("Ingrese la posición de la lista a eliminar");
     my_code.innerText = lista.codeRemoveIndex();
     // Retrasamos la actualización de los datos
-    await setTimeout(waitRemoveindex,2000);
-    
+    //await setTimeout(waitRemoveindex,2000);
+    await setTimeout(()=>{ waitRemoveindex(index) },2000);
 })
 
-async function waitRemoveelement() {
-    let elem = prompt("Ingrese el elemento a eliminar")
+async function waitRemoveelement(elem) {
+    await showList(elem, 'element');
     let v = lista.removeElement(elem);
-    alert(`Elemento sacado: ${v}`);
+    alert(`Elemento sacado: ${elem}`);
     if (v < 0)
         alert(`Elemento ${elem} no encontrado`)
     showList();
 }
 
 btn_remove_element.addEventListener("click", async (e) => {
-    var out = document.getElementById("last-elem");
-    // Cambiamos ID
-    out.id = "last-list"
+    let elem = prompt("Ingrese el elemento a eliminar")
     my_code.innerText = lista.codeRemoveElement();
-    await setTimeout(waitRemoveelement, 2000);
+     await setTimeout(()=>{ waitRemoveelement(elem) },2000);
 
 })
 
