@@ -109,6 +109,8 @@ async function waitDequeue() {
     let elem = queue.dequeue();
     alert(`Elemento sacado ${elem}`)
     showQueue();
+    let first=document.getElementById("first-enqueue");
+    first.id="";
 }
 btn_remove.addEventListener("click", async(e) => {
     e.preventDefault();

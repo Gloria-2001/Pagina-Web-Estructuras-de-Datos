@@ -207,7 +207,6 @@ var show = document.getElementById("show")
 var lista = new List()
 
 function showList(position, action) {
-    console.log(action);
     msg_new.style.display = "none";
     let elems = lista.getList()
     let size = elems.length
@@ -224,14 +223,11 @@ function showList(position, action) {
         if(index==0){
             id="first"    
         }
-        if (position !== undefined && position == index && action !== undefined && action == 'add') {
+        if (position !== undefined && position == index && action !== undefined && action == 'index') {
             id="index-li"
         }
-        if (position !== undefined && position == index && action !== undefined && action == 'remove') {
-            id="last-list"
-        }
         if (position !== undefined && position == e && action !== undefined && action == 'element') {
-            id="last-list"
+            id="element-li"
         }
         my_list += `<li class="first-elem" id="${id}">${e}</li>`
         my_list += arrow_right;
@@ -251,52 +247,43 @@ btn_new.addEventListener("click", e => {
 
 async function waitAdd(elem) {
     let v=lista.append(elem);
-    console.log(v);
     alert(`Elemento insertado: ${elem}`);
     showList();
     let first=document.getElementById("first");
-    first.id="first-list";
-    
+    first.classList.add("first-list");
 }
 
 btn_add.addEventListener("click", async(e)=>{
     e.preventDefault()
     let elem = prompt("Ingrese un elemento");
-    //var out= document.getElementById("first-li");
-    // Cambiamos ID
-    //out.id = "first-list"
     my_code.innerText = lista.codeAppendFront();
-    await setTimeout(()=>{ waitAdd(elem) },2000);
+    await setTimeout(()=>{ waitAdd(elem) },1000);
 })
 
 async function waitBack(elem) {
     let v=lista.appendBack(elem);
-    console.log(v);
     alert(`Elemento insertado: ${elem}`);
     showList();
     let last=document.getElementById("last-li");
-    last.id="first-stack";
-    
+    last.classList.add("first-stack");
 }
 
 btn_add_back.addEventListener("click", async(e) => {
     e.preventDefault();
     let elem = prompt("Ingrese un elemento");
-    //var out = document.getElementById("last-li");
-    // Cambiamos ID
-    //out.id = "first-stack"   
     my_code.innerText = lista.codeAppendBack();
-    await setTimeout(()=>{ waitBack(elem) },2000);
+    await setTimeout(()=>{ waitBack(elem) },1000);
 })
 
 async function waitIndex(index,elem) {
     let v=lista.appendIndex(parseInt(index),elem);
-    console.log(v);
     alert(`Elemento insertado: ${elem}`);
-    showList(parseInt(index), 'add');
+    showList(parseInt(index), 'index');
     let last=document.getElementById("index-li");
-    last.id="first-stack";
-    
+    last.classList.add("first-stack");
+    if (parseInt(index) + 1 == lista.values.length) {
+        last.id = "last-li";
+    }
 }
 btn_add_index.addEventListener("click", async(e)=>{
     e.preventDefault();
@@ -304,12 +291,11 @@ btn_add_index.addEventListener("click", async(e)=>{
     let index = prompt("Ingrese la posición de la lista");
     //lista.appendIndex(parseInt(index),elem);
     my_code.innerText = lista.codeAppendIndex();
-    await setTimeout(()=>{ waitIndex(index,elem) },2000);
+    await setTimeout(()=>{ waitIndex(index,elem) },1000);
 })
 
 async function waitRemove() {
     let elem = lista.remove();
-    console.log(elem);
     alert(`Elemento sacado: ${elem}`);
     showList();
 }
@@ -318,15 +304,14 @@ btn_remove.addEventListener("click", async(e) =>{
     e.preventDefault();
     var out = document.getElementById("last-li");
     // Cambiamos ID
-    out.id = "last-list"
+    out.classList.add("last-list");
     my_code.innerText = lista.codeRemoveBack();
     // Retrasamos la actualización de los datos
-    await setTimeout(waitRemove,2000);
+    await setTimeout(waitRemove,1000);
 })
 
 async function waitRemoveindex(index) {
     //let index = prompt("Ingrese la posición de la lista a eliminar");
-    await showList(parseInt(index), 'remove');
     await alert(`Elemento sacado: ${lista.removeIndex(index)}`);
     showList();
 }
@@ -335,24 +320,31 @@ btn_remove_index.addEventListener("click", async (e)=>{
     e.preventDefault();
     let index = prompt("Ingrese la posición de la lista a eliminar");
     my_code.innerText = lista.codeRemoveIndex();
+    await showList(parseInt(index), 'index');
+    var out = document.getElementById("index-li");
+    // Cambiamos ID
+    out.classList.add("last-list");
     // Retrasamos la actualización de los datos
     //await setTimeout(waitRemoveindex,2000);
-    await setTimeout(()=>{ waitRemoveindex(index) },2000);
+    await setTimeout(()=>{ waitRemoveindex(index) },1000);
 })
 
 async function waitRemoveelement(elem) {
-    await showList(elem, 'element');
     let v = lista.removeElement(elem);
-    alert(`Elemento sacado: ${elem}`);
+    alert(`Elemento sacado: ${v}`);
     if (v < 0)
-        alert(`Elemento ${elem} no encontrado`)
+        alert(`Elemento ${v} no encontrado`)
     showList();
 }
 
 btn_remove_element.addEventListener("click", async (e) => {
     let elem = prompt("Ingrese el elemento a eliminar")
     my_code.innerText = lista.codeRemoveElement();
-     await setTimeout(()=>{ waitRemoveelement(elem) },2000);
+    await showList(elem, 'element');
+    var out = document.getElementById("element-li");
+    // Cambiamos ID
+    out.classList.add("last-list");
+     await setTimeout(()=>{ waitRemoveelement(elem) },1000);
 
 })
 
